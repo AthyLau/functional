@@ -1,11 +1,11 @@
 package com.demik.functional.lambdaexpression;
 
 import com.demik.functional.lambdaexpression.pojo.Track;
-import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
@@ -95,6 +95,14 @@ public class StreamTest {
         test.stream().filter(x -> '1' <= x.charAt(0) && x.charAt(0) <= '9').collect(toList());
     }
 
+    public static void StreamTest() {
+        IntStream.of(1,2,3,5).forEach(System.out::println);
+        IntStream.range(1,10).forEach(System.out::println);
+        IntStream.rangeClosed(1,10).forEach(System.out::println);
+
+        Stream.of(1,2,3,4,5).forEach(System.out::println);
+    }
+
     //map   maptoInt    maptoDouble     mapToLong
     public static void mapTest() {
 
@@ -125,6 +133,24 @@ public class StreamTest {
                 .max(Comparator.comparing(Track::getReader)).orElseThrow(null);
         System.out.println(max.toString());
 
+    }
+    // 普通的非lambda形式下的reduce操作。
+    public static void reduceTest() {
+        List<Track> list = asList(new Track("Bakai", 524), new Track("Green", 111), new Track("kkk", 1823), new Track("12306", 223));
+        Track accumulator = list.get(0);
+        for(Track element : list) {
+            accumulator = combine(accumulator, element);
+        }
+        System.out.println(accumulator.toString());
+    }
+
+    private static Track combine(Track accumulator, Track element) {
+        return accumulator.getReader() > element.getReader() ? accumulator : element;
+    }
+
+    //lambda stream的流式reduce操作
+    public static void reduceStreamTest() {
+//        Stream.of("1", "2", "3", "4").
     }
 
     //optional
@@ -159,6 +185,7 @@ public class StreamTest {
     public static void main(String args[]) throws Throwable {
 //        System.out.println(Arrays.asList(Stream.of("1", "2", "3", "4").mapToDouble(Double::parseDouble).toArray()));
 //        mapTest();
-        maxAndMinTest();
+//        maxAndMinTest();
+        reduceTest();
     }
 }
