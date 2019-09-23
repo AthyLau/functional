@@ -54,7 +54,8 @@ public class LambadTest {
     }
 
     /**
-     * BinaryOperator<T> 是一个接口，这个接口声明了一个没有方法名的方法，<T>是这个方法的返回值类型，//纠正一下哈，这边不是说可以通过这个对象的apply方法来获取结果，而是，这个接口只有这一个apply未实现的方法，所以创建这个对象定义一个方法的时候实际上就是把这个未实现的方法apply实现了
+     * BinaryOperator<T> 是一个接口，这个接口声明了一个没有方法名的方法，<T>是这个方法的返回值类型，
+     * 纠正一下哈，这边不是说可以通过这个对象的apply方法来获取结果，而是，这个接口只有这一个apply未实现的方法，所以创建这个对象定义一个方法的时候实际上就是把这个未实现的方法apply实现了
      */
     private static void binaryOperatorDemo() {
         //不显示声明参数类型的拉姆达表达式定义的一个方法
@@ -80,10 +81,15 @@ public class LambadTest {
             add(2);
             add(3);
         }};
+        listTest.add(33);
+        final StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("1").append("2").append("333");
+        stringBuffer.append("111111");
         final String stringTest = "111";
         listTest.forEach(x->{
             if(intTest == Integer.parseInt(stringTest)){
                 System.out.println(x);
+                System.out.println(stringBuffer.toString());
             }
         });
     }
