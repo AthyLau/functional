@@ -10,7 +10,7 @@ package com.demik.functional.lambdaexpression.pojo;
 public class Track {
     private String name;
     private Integer reader;
-
+    private Integer seconds;
     public Track() {
     }
 
@@ -19,11 +19,18 @@ public class Track {
         this.reader = reader;
     }
 
+    public Track(String name, Integer reader, Integer seconds) {
+        this.name = name;
+        this.reader = reader;
+        this.seconds = seconds;
+    }
+
     @Override
     public String toString() {
         return "Track{" +
                 "name='" + name + '\'' +
                 ", reader=" + reader +
+                ", seconds=" + seconds +
                 '}';
     }
 
@@ -41,5 +48,13 @@ public class Track {
 
     public void setReader(Integer reader) {
         this.reader = reader;
+    }
+
+    public Integer getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(Integer seconds) {
+        this.seconds = seconds;
     }
 }

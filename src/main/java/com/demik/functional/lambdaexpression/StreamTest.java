@@ -150,7 +150,11 @@ public class StreamTest {
 
     //lambda stream的流式reduce操作
     public static void reduceStreamTest() {
-//        Stream.of("1", "2", "3", "4").
+        //从 -1开始加一直加到6
+        int count = Stream.of(0, 1, 2, 3, 4, 5, 6).reduce(-1, (acc, element) -> acc + element);
+        System.out.println(count);
+        count = IntStream.rangeClosed(0, 6).reduce(-1 ,(acc, element) -> acc + element);
+        System.out.println(count);
     }
 
     //optional
@@ -175,17 +179,26 @@ public class StreamTest {
             System.out.println(x);
         });
 
-
         for (Integer x : asList(1, 3, 4, 5, 9)) {
             System.out.println(x);
         }
 
     }
 
+
+
+
+
+
+
     public static void main(String args[]) throws Throwable {
 //        System.out.println(Arrays.asList(Stream.of("1", "2", "3", "4").mapToDouble(Double::parseDouble).toArray()));
 //        mapTest();
 //        maxAndMinTest();
-        reduceTest();
+//        reduceTest();
+        reduceStreamTest();
     }
+
+
+
 }
