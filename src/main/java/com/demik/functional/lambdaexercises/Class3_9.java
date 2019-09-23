@@ -4,10 +4,9 @@ import com.demik.functional.lambdaexpression.ATADemo;
 import com.demik.functional.lambdaexpression.pojo.Album;
 import com.demik.functional.lambdaexpression.pojo.Artist;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -24,6 +23,13 @@ public class Class3_9 {
         System.out.println(getNewArtistsList(ATADemo.album1.getMusicians()));
         System.out.println(getThreeTrackAlbum(ATADemo.albums));
         System.out.println(getTotalMembersFromList(ATADemo.album1.getMusicians()));
+        System.out.println(getLowerCharNumFromStr("abc"));
+        System.out.println(getMoreLowerStr(new ArrayList<String>() {{
+            add("abcQEEWss");
+            add("defdDSAd");
+            add("qqqfeAAAf");
+            add("3ertaassss");
+        }}).get());
     }
 
     /**
@@ -53,5 +59,20 @@ public class Class3_9 {
     private static Integer getTotalMembersFromList(List<Artist> artists) {
         //内部迭代，外部迭代foreach
         return artists.stream().mapToInt(artist -> artist.getMembers() == null ? 1 : artist.getMembers().size()).sum();
+    }
+
+    /**
+     * 计算一个字符串中小写字母的个数
+     */
+    private static Integer getLowerCharNumFromStr(String str){
+//        return Integer.parseInt(String.valueOf(IntStream.rangeClosed(0, str.length()-1).filter(i -> Character.isLowerCase(str.charAt(i))).count()));
+        return IntStream.rangeClosed(0, str.length()-1).filter(i -> Character.isLowerCase(str.charAt(i))).boxed().collect(Collectors.toList()).size();
+    }
+
+    /**
+     * 在一个字符串列表中，找出包含最多小写字母的字符串。对于空列表，返回 Optional<String> 对象。
+     */
+    private static Optional<String> getMoreLowerStr(List<String> list) {
+        return list.stream().max(Comparator.comparing(Class3_9::getLowerCharNumFromStr));
     }
 }
