@@ -7,7 +7,6 @@ import com.demik.functional.lambdaexpression.pojo.Artist;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Function:
