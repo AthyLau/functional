@@ -1,5 +1,6 @@
 package com.demik.functional.dto.logger;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
