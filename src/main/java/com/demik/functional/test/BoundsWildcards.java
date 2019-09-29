@@ -21,7 +21,9 @@ import java.util.List;
 public class BoundsWildcards {
 
     public static void main(String args[]){
-        upBoundWildcards();
+        //<? extends C> 适合大量做获取操作的情景，<? super C> 适合大量做添加操作的情景。
+//        upBoundWildcards();
+        downBoundWildcards();
     }
     //上界测试
     public static void upBoundWildcards(){
@@ -68,6 +70,52 @@ public class BoundsWildcards {
     }
     //下界测试
     public static void downBoundWildcards(){
+        //只能装水果的水果盘
+        List<? super Fruit> fruits = new ArrayList<Fruit>(){{
+            add(new Banana());
+            add(new Fruit());
+//            addAll(foods);
+            addAll(new ArrayList<Fruit>(){{
+                add(new Fruit());
+                add(new Banana());
+            }});
+            addAll(new ArrayList<Banana>(){{
+                add(new Banana());
+            }});
+            //下界只能添加Fruit及其子类的实例。
+//            add(new Food());
+        }};
+        //只能装水果的食物盘
+        List<? super Fruit> foods = new ArrayList<Food>(){{
+            add(new Apple());
+            //只能添加food的实例或者food子类的实例
+            addAll(new ArrayList<Food>(){{
+                add(new Food());
+                add(new Fruit());
+            }});
+            addAll(new ArrayList<Fruit>(){{
+                add(new Fruit());
+            }});
+            addAll(new ArrayList<Banana>(){{
+                add(new Banana());
+            }});
+//            addAll(fruits);
+        }};
+
+        //下界可以初始化之后继续存东西
+        fruits.add(new Banana());
+
+//        fruits.addAll(foods);
+//        foods.addAll(fruits);
+
+        //下界可以往外取不过取出来的元素都是Object需要强转
+        foods.stream().forEach(x -> {
+            System.out.println(x.getClass());
+            System.out.println(x);
+            Food food = (Food) x;
+            System.out.println(food);
+        });
+
 
     }
 }

@@ -20,5 +20,4 @@ public class BinFunctionTest {
         System.out.println(BF1.andThen(BF2).apply(10, 30));
     }
 
-
 }
