@@ -1,5 +1,6 @@
 package com.demik.functional.lambdaexpression.pojo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 public class Artist {
 
     private String name;
-    private List<Artist> members;
+    private List<Artist> members = new ArrayList<>();
     private String origin;
 
     public Artist() {
