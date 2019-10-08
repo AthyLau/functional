@@ -4,7 +4,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * @author liubing
+ * @author AthyLau
  * @dare: 2019/9/29 5:10 PM
  * @since JDK 1.8
  */
