@@ -1,4 +1,4 @@
-package com.demik.functional.lambdaexpression;
+package com.demik.functional.test;
 
 import com.demik.functional.lambdaexpression.pojo.Track;
 import org.apache.logging.log4j.util.Strings;
