@@ -150,11 +150,17 @@ public class StreamTest {
 
     //lambda stream的流式reduce操作
     public static void reduceStreamTest() {
+        //有初始值的reduce操作
         //从 -1开始加一直加到6
         int count = Stream.of(0, 1, 2, 3, 4, 5, 6).reduce(-1, (acc, element) -> acc + element);
         System.out.println(count);
         count = IntStream.rangeClosed(0, 6).reduce(-1 ,(acc, element) -> acc + element);
         System.out.println(count);
+        //没有初始值的reduce操作
+        int sum = Stream.of(-1, 0, 1, 2, 3, 4, 5, 6).reduce((acc, element) -> acc + element).get();
+        System.out.println(sum);
+        sum = IntStream.rangeClosed(-1, 6).reduce((acc, element) -> acc + element).getAsInt();
+        System.out.println(sum);
     }
 
     //optional
@@ -168,6 +174,8 @@ public class StreamTest {
                 return new Exception("1111");
             }
         }));
+
+
     }
 
     //flatmap

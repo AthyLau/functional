@@ -3,7 +3,7 @@ package com.demik.functional.test;
 import java.util.function.Function;
 
 /**
- * @author liubing
+ * @author AthyLau
  * @dare: 2019/9/29 4:50 PM
  * @since JDK 1.8
  */

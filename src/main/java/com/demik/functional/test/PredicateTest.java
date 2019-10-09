@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 /**
- * @author liubing
+ * @author AthyLau
  * @dare: 2019/9/29 7:10 PM
  * @since JDK 1.8
  */
